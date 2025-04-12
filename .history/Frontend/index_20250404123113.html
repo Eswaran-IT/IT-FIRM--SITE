@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/svg+xml" href="/vite.svg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <title>IT Firm</title>
+
+  <style>
+    /* Glowing Text Effect */
+    .glow-text {
+      text-shadow: 0 0 15px #22c55e, 0 0 25px #16a34a, 0 0 35px #15803d;
+      animation: glow 1.5s infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #22c55e, 0 0 20px #16a34a, 0 0 30px #15803d;
+      }
+      to {
+        text-shadow: 0 0 20px #16a34a, 0 0 30px #22c55e, 0 0 40px #1a7f3a;
+      }
+    }
+
+    /* Welcome Text Flashing Effect (3 times) */
+    .welcome-text {
+      animation: flash 0.5s linear 3, floatGlow 3s infinite alternate ease-in-out;
+    }
+
+    @keyframes flash {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
+    /* Floating Glow Effect */
+    @keyframes floatGlow {
+      from {
+        transform: translateY(0px);
+        text-shadow: 0 0 10px #22c55e;
+      }
+      to {
+        transform: translateY(8px);
+        text-shadow: 0 0 20px #16a34a;
+      }
+    }
+
+    /* Interactive Description Box */
+    .description-box {
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      border: 2px solid #22c55e;
+      box-shadow: 0 0 20px rgba(34, 197, 94, 0.6);
+      padding: 16px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .description-box:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(34, 197, 94, 0.9);
+    }
+
+    /* Bubble Animation */
+    .bubble {
+      position: absolute;
+      bottom: -20px;
+      width: 10px;
+      height: 10px;
+      background: rgba(34, 197, 94, 0.6);
+      border-radius: 50%;
+      opacity: 0.8;
+      animation: bubbleRise linear infinite;
+    }
+
+    @keyframes bubbleRise {
+      from {
+        transform: translateY(0) scale(1);
+        opacity: 0.9;
+      }
+      to {
+        transform: translateY(-100vh) scale(0.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body class="relative bg-black text-white">
+  
+  <!-- Bubbles Container -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const bubbleContainer = document.createElement("div");
+        bubbleContainer.className = "absolute inset-0 overflow-hidden pointer-events-none";
+        document.body.appendChild(bubbleContainer);
+
+        function createBubble() {
+          const bubble = document.createElement("div");
+          bubble.className = "bubble";
+          const size = Math.random() * 20 + 10; // Random size between 10px and 30px
+          bubble.style.width = `${size}px`;
+          bubble.style.height = `${size}px`;
+          bubble.style.left = `${Math.random() * 100}vw`;
+          bubble.style.animationDuration = `${Math.random() * 5 + 3}s`; // Between 3s and 8s
+          bubbleContainer.appendChild(bubble);
+
+          setTimeout(() => {
+            bubble.remove();
+          }, 8000); // Remove after animation
+        }
+
+        setInterval(createBubble, 500); // Generate bubbles every 500ms
+      });
+    </script>
+  </div>
+
+  <!-- Root React App -->
+  <div id="root"></div>
+  <script type="module" src="/src/main.jsx"></script>
+</body>
+</html>
