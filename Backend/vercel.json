@@ -3,7 +3,7 @@
     "name" : "GS-TECH-GROUPS",
     "builds" : [
         {
-            "src" : "./index.js",
+            "src" : "./main.js",
             "use" : "@vercel/node"
         }
     ],
