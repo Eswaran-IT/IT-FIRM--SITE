@@ -1,6 +1,6 @@
-// config/db.js
 const mysql = require("mysql2/promise");
 require("dotenv").config();
+
 let connection;
 
 async function connectDB() {
@@ -9,11 +9,11 @@ async function connectDB() {
       host: process.env.DB_HOST,
       user: process.env.DB_USER,
       password: process.env.DB_PASS,
-      // Do NOT specify database here yet
+      port: process.env.DB_PORT || 3306 // 👈 Added port
     });
-    console.log("MySQL Database Connected");
+    console.log("✅ MySQL Database Connected");
   } catch (err) {
-    console.error("MySQL connection failed:", err.message);
+    console.error("❌ MySQL connection failed:", err.message);
     process.exit(1);
   }
 }
