@@ -10,7 +10,7 @@
 - `DB_PASS` = your MySQL password
 - `DB_NAME` = name of the database (`gs_tech_db`)
 
----
+--
 
 ## Database Tables
 
